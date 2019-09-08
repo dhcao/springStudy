@@ -9,42 +9,92 @@
   default-autowire="byName">
 
   <!-- 采用注解的方式配置Bean，配置要扫描的包。需要根据代码实时更新 -->
-  <context:component-scan base-package="org.dhcao.relax.spring.prototype">
+  <context:component-scan base-package="org.dhcao.relax.spring.eventListener">
   </context:component-scan>
   <!-- 读入配置属性文件 -->
   <!--<context:property-placeholder-->
     <!--location="classpath:db.properties, classpath:public_system.properties" />-->
 
-  <bean id="home" scope="singleton" class="org.dhcao.relax.spring.code.Home" autowire="byName" autowire-candidate="false">
+  <!--<bean id="home" scope="singleton" class="org.dhcao.relax.spring.code.Home" autowire="byName" autowire-candidate="false">-->
 
-   <meta key="key" value="value"></meta>
-  </bean>
+   <!--<meta key="key" value="value"></meta>-->
+  <!--</bean>-->
 
-  <bean id="desk" name="desk" scope="singleton" class="org.dhcao.relax.spring.code.Desk" >
-  </bean>
+  <!--<bean id="desk" name="desk" scope="singleton" class="org.dhcao.relax.spring.code.Desk" >-->
+  <!--</bean>-->
 
 
 
-  <!-- test the lookup-method -->
-  <bean id="getBeanTest" class="org.dhcao.relax.spring.lookup.GetBeanTest">
-    <lookup-method name="getBean" bean="teacher"></lookup-method>
-  </bean>
-  <bean id="teacher" class="org.dhcao.relax.spring.lookup.Teacher"></bean>
+  <!--&lt;!&ndash; test the lookup-method &ndash;&gt;-->
+  <!--<bean id="getBeanTest" class="org.dhcao.relax.spring.lookup.GetBeanTest">-->
+    <!--<lookup-method name="getBean" bean="teacher"></lookup-method>-->
+  <!--</bean>-->
+  <!--<bean id="teacher" class="org.dhcao.relax.spring.lookup.Teacher"></bean>-->
 
 
   <!-- test the replace-method -->
-  <bean id="testChangeMethod" class="org.dhcao.relax.spring.replaced.TestChangeMethod">
-    <replaced-method name="changeMe" replacer="replacer"></replaced-method>
-  </bean>
+  <!--<bean id="testChangeMethod" class="org.dhcao.relax.spring.replaced.TestChangeMethod">-->
+    <!--<replaced-method name="changeMe" replacer="replacer"></replaced-method>-->
+  <!--</bean>-->
 
-  <bean id="replacer" class="org.dhcao.relax.spring.replaced.TestMethodReplacer"></bean>
+  <!--<bean id="replacer" class="org.dhcao.relax.spring.replaced.TestMethodReplacer"></bean>-->
 
 
   <!-- my xsd -->
   <myname:user id="testBean" userName="aaa" email="bbb"/>
 
   <!-- my factory-->
-  <bean id="car" class="org.dhcao.relax.spring.myFactory.CarFactoryBean">
-    <property name="carInfo" value="超级跑车,400,200000"></property>
-  </bean>
+  <!--<bean id="car" class="org.dhcao.relax.spring.myFactory.CarFactoryBean">-->
+    <!--<property name="carInfo" value="超级跑车,400,200000"></property>-->
+  <!--</bean>-->
+
+
+  <!-- 自定义属性测试 propertiyEditor begin -->
+  <!-- 将自定义属性注册进Spring -->
+  <!--<bean class="org.springframework.beans.factory.config.CustomEditorConfigurer">-->
+    <!--<property name="customEditors">-->
+      <!--<map>-->
+        <!--<entry key="java.util.Date">-->
+          <!--<bean class="org.dhcao.relax.spring.propertyEditor.DatePropertyEditor">-->
+            <!--<property name="format" value="yyyy-MM-dd"></property>-->
+          <!--</bean>-->
+        <!--</entry>-->
+      <!--</map>-->
+    <!--</property>-->
+  <!--</bean>-->
+
+  <!-- 注册spring自带编辑器 -->
+  <!--<bean class="org.springframework.beans.factory.config.CustomEditorConfigurer">-->
+    <!--<property name="propertyEditorRegistrars">-->
+      <!--<list>-->
+        <!--<bean class="org.dhcao.relax.spring.propertyEditor.DatePropertyEditorRegistrar"></bean>-->
+      <!--</list>-->
+    <!--</property>-->
+  <!--</bean>-->
+  <!-- 自定义属性测试 propertiyEditor end -->
+
+  <!-- 自定义属性测试 propertiyEditor begin -->
+  <!-- 将自定义属性注册进Spring -->
+  <!--<bean class="org.springframework.beans.factory.config.CustomEditorConfigurer">-->
+    <!--<property name="customEditors">-->
+      <!--<map>-->
+        <!--<entry key="java.util.Date">-->
+          <!--<bean class="org.dhcao.relax.spring.propertyEditor.DatePropertyEditor">-->
+            <!--<property name="format" value="yyyy-MM-dd"></property>-->
+          <!--</bean>-->
+        <!--</entry>-->
+      <!--</map>-->
+    <!--</property>-->
+  <!--</bean>-->
+
+  <!-- 注册spring自带编辑器 -->
+  <!--<bean class="org.springframework.beans.factory.config.CustomEditorConfigurer">-->
+    <!--<property name="propertyEditorRegistrars">-->
+      <!--<list>-->
+        <!--<bean class="org.dhcao.relax.spring.propertyEditor.DatePropertyEditorRegistrar"></bean>-->
+      <!--</list>-->
+    <!--</property>-->
+  <!--</bean>-->
+  <!-- 自定义属性测试 propertiyEditor end -->
+
 </beans>
